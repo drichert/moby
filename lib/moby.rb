@@ -3,5 +3,5 @@ $:.unshift(File.dirname(__FILE__))
 module Moby
   VERSION = "0.0.1"
 
-  autoload :POS, "moby/pos.rb"
+  autoload :PartsOfSpeech, "moby/parts_of_speech.rb"
 end

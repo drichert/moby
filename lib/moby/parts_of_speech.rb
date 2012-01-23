@@ -1,5 +1,5 @@
 module Moby
-  class POS
+  class PartsOfSpeech
     private
       def code_map
         {
