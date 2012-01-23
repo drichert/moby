@@ -1,6 +1,15 @@
 module Moby
   class PartsOfSpeech
+    attr_reader :pos
+
+    #def intialize
+    #end
+
     private
+      #def load_pos_db
+      #  File.open
+      #end
+
       def code_map
         {
           :N => :noun,
