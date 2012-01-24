@@ -2,9 +2,6 @@ require 'spec_helper'
 
 module Moby
   describe PartsOfSpeech do
-    describe "#initialize" do
-      it "should load Moby parts-of-speech file to Hash" do
-      end
-    end
+    its(:pos) { should be_a(Hash) }
   end
 end
