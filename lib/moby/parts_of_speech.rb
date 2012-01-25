@@ -13,9 +13,7 @@ module Moby
 
         @pos = Hash[
           pos.readlines.map {|ln|
-            l = ln.split('\\').map {|p| p.strip }
-            #puts l
-            #l
+            ln.split('\\').map {|p| p.strip }
           }
         ]
       end
