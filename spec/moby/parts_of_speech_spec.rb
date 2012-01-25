@@ -5,21 +5,18 @@ module Moby
   describe PartsOfSpeech do
     let(:pos) { PartsOfSpeech.new }
 
-    subject { pos }
-    its(:pos) { should be_a(Hash) }
+    describe "@pos" do
+      subject { pos.instance_variable_get(:@pos) }
 
-    describe "@pos Hash" do
-      subject { pos.pos }
-
-      # it "debug" do
-      #   puts YAML.dump(subject)
-      # end
+      it { should be_a(Hash) }
 
       its(["aback"])       { should == "v" }
       its(["backbit"])     { should == "V" }
       its(["commonplace"]) { should == "AN" }
       its(["daydreamy"])   { should == "A" }
       its(["etymologise"]) { should == "ti" }
+      its(["flam"])        { should == "NV" }
+      its(["garnishee"])   { should == "NVt" }
     end
   end
 end

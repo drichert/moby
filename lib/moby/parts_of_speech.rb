@@ -2,8 +2,6 @@ require "iconv"
 
 module Moby
   class PartsOfSpeech
-    attr_reader :pos
-
     def initialize
       load_pos_db
     end
@@ -15,7 +13,7 @@ module Moby
 
         @pos = Hash[
           pos.readlines.map {|ln|
-            l = ln.split('\\').map {|p| p.gsub(/\s*$/, "") }
+            l = ln.split('\\').map {|p| p.strip }
             #puts l
             #l
           }
