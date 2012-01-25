@@ -10,24 +10,16 @@ module Moby
 
     private
       def load_pos_db
-        path = %w{share moby parts-of-speech mobypos.txt}
+        path = %w{share moby parts-of-speech mobypos.UTF-8.txt}
         pos = File.open(File.join(Moby::base_path, *path))
 
         @pos = Hash[
           pos.readlines.map {|ln|
-            fix_byte_seq(ln).match(
-              /(.*)\\(.*)/
-            ).captures.map {|p|
-              p.chop
-            }
+            l = ln.split('\\').map {|p| p.gsub(/\s*$/, "") }
+            #puts l
+            #l
           }
         ]
-      end
-
-      # Fix UTF-8 byte sequence
-      # http://po-ru.com/diary/fixing-invalid-utf-8-in-ruby-revisited/
-      def fix_byte_seq(str)
-        Iconv.new('UTF-8//IGNORE', 'UTF-8').iconv(str + ' ')[0..-2]
       end
 
       def code_map

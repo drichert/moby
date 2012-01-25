@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'yaml'
 
 module Moby
   describe PartsOfSpeech do
@@ -10,15 +11,15 @@ module Moby
     describe "@pos Hash" do
       subject { pos.pos }
 
-      describe "A1c" do
-        it { should have_key("A1c") }
-        its(["A1c"]) { should == "N" }
-      end
+      # it "debug" do
+      #   puts YAML.dump(subject)
+      # end
 
-      describe "backbit" do
-        it { should have_key("backbit") }
-        its(["backbit"]) { should == "V" }
-      end
+      its(["aback"])       { should == "v" }
+      its(["backbit"])     { should == "V" }
+      its(["commonplace"]) { should == "AN" }
+      its(["daydreamy"])   { should == "A" }
+      its(["etymologise"]) { should == "ti" }
     end
   end
 end
