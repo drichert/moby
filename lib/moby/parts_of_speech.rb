@@ -1,5 +1,3 @@
-require "iconv"
-
 module Moby
   class PartsOfSpeech
     def initialize
