@@ -104,30 +104,28 @@ module Moby
         it { should include("off", "senza", "except" ) }
       end
 
-      #describe "#interjection" do
-      #  subject { pos.noun }
-      #  it { should include("abaca", "unchildishness", "transcription" ) }
-      #end
+      describe "#interjection" do
+        subject { pos.interjection }
+        it { should include("eyes front", "horsefeathers", "jeepers" ) }
+      end
 
-      #describe "#pronoun" do
-      #  subject { pos.noun }
-      #  it { should include("abaca", "unchildishness", "transcription" ) }
-      #end
+      describe "#pronoun" do
+        subject { pos.pronoun }
+        it { should include("lot", "me", "noblewoman" ) }
+      end
 
-      #describe "#definite_article" do
-      #  subject { pos.noun }
-      #  it { should include("abaca", "unchildishness", "transcription" ) }
-      #end
+      describe "#definite_article" do
+        subject { pos.definite_article }
+        it { should include("no", "other", "per" ) }
+      end
 
-      #describe "#indefinite_article" do
-      #  subject { pos.noun }
-      #  it { should include("abaca", "unchildishness", "transcription" ) }
-      #end
+      describe "#indefinite_article" do
+        pending("No definite articles in current Moby POS")
+      end
 
-      #describe "#nominative" do
-      #  subject { pos.noun }
-      #  it { should include("abaca", "unchildishness", "transcription" ) }
-      #end
+      describe "#nominative" do
+       pending("No nominatives in current Moby POS")
+      end
     end
   end
 end
