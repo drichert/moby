@@ -8,6 +8,21 @@ module Moby
       { word: word, code: pos_code(word), pos: pos_breakdown(word) }
     end
 
+    def method_missing(meth, *args, &block)
+      # #noun, #adverb, #verb_usu_participle, etc
+      if pos_code_map.values.include?(meth)
+        @pos.select {|word, code| code.include?(pos_code_map.key(meth)) }.keys
+      else
+        super
+      end
+    end
+
+    def respond_to?(meth)
+      true if pos_code_map.values.include?(meth)
+
+      super
+    end
+
     private
       def load_pos_db
         path = %w{share moby parts-of-speech mobypos.UTF-8.txt}
