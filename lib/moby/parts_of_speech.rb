@@ -1,17 +1,13 @@
 module Moby
   class PartsOfSpeech
-    def initialize
-      load_pos_db
-    end
-
     def find(word)
       { word: word, code: pos_code(word), pos: pos_breakdown(word) }
     end
 
     def method_missing(meth, *args, &block)
       # #noun, #adverb, #verb_usu_participle, etc
-      if pos_code_map.values.include?(meth)
-        @pos.select {|word, code| code.include?(pos_code_map.key(meth)) }.keys
+      if pos_words.include?(meth)
+        pos.select {|word, code| code.include?(pos_code_map.key(meth)) }.keys
       else
         super
       end
@@ -24,11 +20,11 @@ module Moby
     end
 
     private
-      def load_pos_db
+      def pos
         path = %w{share moby parts-of-speech mobypos.UTF-8.txt}
         pos = File.open(File.join(Moby::base_path, *path))
 
-        @pos = Hash[
+        @pos ||= Hash[
           pos.readlines.map {|ln|
             ln.split('\\').map {|p| p.strip }
           }
@@ -37,7 +33,7 @@ module Moby
 
       # Get part of speech code for word
       def pos_code(word)
-        @pos[word]
+        pos[word]
       end
 
       def pos_code_map
@@ -58,6 +54,14 @@ module Moby
           "I" => :indefinite_article,
           "o" => :nominative
         }
+      end
+
+      def pos_codes
+        pos_code_map.keys
+      end
+
+      def pos_words
+        pos_code_map.values
       end
 
       # Convert POS code to array of descriptive symbols from #pos_code_map
