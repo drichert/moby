@@ -8,10 +8,10 @@ module Moby
       meth_s = meth.to_s
 
       # #noun, #adverb, #verb_usu_participle, etc
-      if pos_words.include?(meth)
+      if pos_names.include?(meth)
         pos.select {|word, code| code.include?(pos_code_map.key(meth)) }.keys
       # #noun?, #adverb?, #adjective?, etc
-      elsif meth_s.end_with?("?") and pos_words.include?(meth_s.chop.to_sym)
+      elsif meth_s.end_with?("?") and pos_names.include?(meth_s.chop.to_sym)
         find(args.first)[:pos].include?(meth_s.chop.to_sym)
       else
         super
@@ -19,7 +19,7 @@ module Moby
     end
 
     def respond_to?(meth)
-      if pos_words.include?(meth)
+      if pos_names.include?(meth)
         true
       else
         super
@@ -67,7 +67,7 @@ module Moby
         pos_code_map.keys
       end
 
-      def pos_words
+      def pos_names
         pos_code_map.values
       end
 
