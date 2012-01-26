@@ -19,7 +19,11 @@ module Moby
     end
 
     def respond_to?(meth)
+      meth_s = meth.to_s
+
       if pos_names.include?(meth)
+        true
+      elsif meth_s.end_with?("?") and pos_names.include?(meth_s.chop.to_sym)
         true
       else
         super

@@ -114,13 +114,6 @@ module Moby
       end
     end
 
-    describe "#respond_to?" do
-      [:noun, :plural, :noun_phrase, :verb_usu_participle, :verb_transitive,
-       :verb_intransitive, :adjective, :adverb, :conjunction, :preposition,
-       :interjection, :pronoun, :definite_article, :indefinite_article,
-       :nominative].each {|meth| it { should respond_to(meth) } }
-    end
-
     describe "#noun?" do
       ["accuracy", "bailiff", "Dada"].each do |word|
         describe "\"#{word}\"" do
@@ -134,6 +127,16 @@ module Moby
           subject { pos.noun?(word) }
           it { should be_false }
         end
+      end
+    end
+
+    describe "#respond_to?" do
+      [:noun, :plural, :noun_phrase, :verb_usu_participle, :verb_transitive,
+       :verb_intransitive, :adjective, :adverb, :conjunction, :preposition,
+       :interjection, :pronoun, :definite_article, :indefinite_article,
+       :nominative].each do |meth|
+        it { should respond_to(meth) }
+        it { should respond_to("#{meth}?".to_sym) }
       end
     end
   end
