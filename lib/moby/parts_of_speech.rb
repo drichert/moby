@@ -5,9 +5,14 @@ module Moby
     end
 
     def method_missing(meth, *args, &block)
+      meth_s = meth.to_s
+
       # #noun, #adverb, #verb_usu_participle, etc
       if pos_words.include?(meth)
         pos.select {|word, code| code.include?(pos_code_map.key(meth)) }.keys
+      # #noun?, #adverb?, #adjective?, etc
+      elsif meth_s.end_with?("?") and pos_words.include?(meth_s.chop.to_sym)
+        find(args.first)[:pos].include?(meth_s.chop.to_sym)
       else
         super
       end

@@ -120,5 +120,21 @@ module Moby
        :interjection, :pronoun, :definite_article, :indefinite_article,
        :nominative].each {|meth| it { should respond_to(meth) } }
     end
+
+    describe "#noun?" do
+      ["accuracy", "bailiff", "Dada"].each do |word|
+        describe "\"#{word}\"" do
+          subject { pos.noun?(word) }
+          it { should be_true }
+        end
+      end
+
+      ["fifty-fifty", "hutting", "impermeably"].each do |word|
+        describe "\"#{word}\"" do
+          subject { pos.noun?(word) }
+          it { should be_false }
+        end
+      end
+    end
   end
 end
