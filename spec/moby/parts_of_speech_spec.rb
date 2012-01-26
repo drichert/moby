@@ -113,5 +113,12 @@ module Moby
        pending("No nominatives in current Moby POS")
       end
     end
+
+    describe "#respond_to?" do
+      [:noun, :plural, :noun_phrase, :verb_usu_participle, :verb_transitive,
+       :verb_intransitive, :adjective, :adverb, :conjunction, :preposition,
+       :interjection, :pronoun, :definite_article, :indefinite_article,
+       :nominative].each {|meth| it { should respond_to(meth) } }
+    end
   end
 end
