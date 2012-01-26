@@ -14,9 +14,11 @@ module Moby
     end
 
     def respond_to?(meth)
-      true if pos_code_map.values.include?(meth)
-
-      super
+      if pos_words.include?(meth)
+        true
+      else
+        super
+      end
     end
 
     private
