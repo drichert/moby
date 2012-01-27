@@ -1,56 +1,71 @@
-ruby-moby
-Ruby interface for Moby Project wordlists
+Moby
+====
 
-Dan Richert
-dan.richert@gmail.com
+**WIP**
 
+Ruby interface for [Moby Project](http://en.wikipedia.org/wiki/Moby_Project)
+[wordlists](http://www.gutenberg.org/catalog/world/results?title=moby+list)
 
+Usage
+-----
+```ruby
 pos = Moby::PartsOfSpeech.new
-pos = Moby::POS.new # alias
+```
 
-# Return arrays for the corresponding parts of speech
-pos.noun
-pos.plural
-pos.noun_phrase
+Get word lists by part of speech 
+
+```ruby
+pos.nouns 
+pos.plurals
+pos.noun_phrases
+pos.adjectives
+pos.adverbs
+pos.conjunctions
+pos.prepositions
+pos.interjections
 pos.verb_usu_participle
-  # alias: verb_u
-  # Should there by a default verb type?
-pos.verb_transitive
-  # alias: verb_t
-pos.verb_intransitive
-  # alias verb_i
-pos.adjective
-pos.adverb
-pos.conjunction
-pos.preposition
-pos.interjection
-pos.pronoun
-pos.definite_article
-pos.indefintie_article
-pos.nominative
+pos.pronouns
+pos.definite_articles
+pos.indefinite_articles
+pos.nominatives
+```
 
+`#verbs` takes an optional `:type` parameter since there's three types 
 
-pos.noun?("animal")             # true
-pos.verb?("run")                # true
-pos.intransitive_verb?("walk")  # true
+```ruby
+pos.verbs
+pos.verbs(:type => :all) # default
+pos.verbs(:type => :usu)
+pos.verbs(:type => :transitive)
+pos.verbs(:type => :intransitive)  
+```
 
+Find parts of speech info for a word
 
-pos.find("word")
-# {
-#   :word => "word",
-#   :code => "Nt",
-#   :pos => [
-#     :noun, :verb_transitive
-#   ]
-# }
+```ruby
+pos.find("word") 
+#=> {
+#=>   :word => "word", 
+#=>   :code => "Nt", 
+#=>   :pos => [:noun, :vert_transitive]
+#=> }
+  
+pos.find("walk") 
+#=> {
+#=>   :word => "walk", 
+#=>   :code => "iNt", 
+#=>   :pos => [:noun, :verb_transitive, :verb_intransitive]
+#=> }
+```
 
-pos.find("walk")
-# {
-#   :word => "walk",
-#   :code => "iNt",
-#   :pos => [
-#     :noun, :verb_transitive, :verb_intransitive
-#   ]
-# }
+Check a word by part of speech
+
+```ruby
+pos.noun?("animal")             #=> true
+pos.verb?("run")                #=> true
+pos.intransitive_verb?("walk")  #=> true
+pos.adjective?("sky")           #=> false
+```
+
 
 
