@@ -23,7 +23,6 @@ pos.adverbs
 pos.conjunctions
 pos.prepositions
 pos.interjections
-pos.verb_usu_participle
 pos.pronouns
 pos.definite_articles
 pos.indefinite_articles
