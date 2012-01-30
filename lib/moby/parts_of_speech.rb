@@ -41,12 +41,11 @@ module Moby
     def noun_phrase?(word); pos?(word, :noun_phrase); end
     def adjective?(word); pos?(word, :adjective); end
     def adverb?(word); pos?(word, :adverb); end
-
-    def conjunction?(word); end
-    def preposition?(word); end
-    def interjection?(word); end
-    def pronoun?(word); end
-    def definite_article?(word); end
+    def conjunction?(word); pos?(word, :conjunction); end
+    def preposition?(word); pos?(word, :preposition); end
+    def interjection?(word); pos?(word, :interjection); end
+    def pronoun?(word); pos?(word, :pronoun); end
+    def definite_article?(word); pos?(word, :definite_article); end
     def indefinite_article?(word); end
     def nominative?(word); end
 

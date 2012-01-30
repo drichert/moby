@@ -122,7 +122,7 @@ module Moby
       end
 
       describe "#nominatives" do
-       pending("No nominatives in current Moby POS")
+        pending("No nominatives in current Moby POS")
       end
     end
 
@@ -169,6 +169,42 @@ module Moby
           subject { pos.conjunction?(word) }
           describe(word) { it { should be_true } }
         end
+      end
+
+      describe "#preposition?" do
+        %w{of outside between}.each do |word|
+          subject { pos.preposition?(word) }
+          describe(word) { it { should be_true } }
+        end
+      end
+
+      describe "#interjection?" do
+        %w{bingo halt viva}.each do |word|
+          subject { pos.interjection?(word) }
+          describe(word) { it { should be_true } }
+        end
+      end
+
+      describe "#pronoun?" do
+        %w{nobody hisself whereinto}.each do |word|
+          subject { pos.pronoun?(word) }
+          describe(word) { it { should be_true } }
+        end
+      end
+
+      describe "#definite_article?" do
+        %w{no more enough}.each do |word|
+          subject { pos.definite_article?(word) }
+          describe(word) { it { should be_true } }
+        end
+      end
+
+      describe "#indefinite_aticle?" do
+        pending("No definite articles in current Moby POS")
+      end
+
+      describe "#nominative?" do
+        pending("No nominatives in current Moby POS")
       end
     end
 
