@@ -49,27 +49,6 @@ module Moby
     def indefinite_article?(word); end
     def nominative?(word); end
 
-
-    #def method_missing(meth, *args, &block)
-    #  meth_s = meth.to_s
-
-    #  if meth_s.end_with?("?") and pos_names.include?(meth_s.chop.to_sym)
-    #    find(args.first)[:pos].include?(meth_s.chop.to_sym)
-    #  else
-    #    super
-    #  end
-    #end
-
-    #def respond_to?(meth)
-    #  meth_s = meth.to_s
-
-    #  if meth_s.end_with?("?") and pos_names.include?(meth_s.chop.to_sym)
-    #    true
-    #  else
-    #    super
-    #  end
-    #end
-
     private
       def pos
         path = %w{share moby parts-of-speech mobypos.UTF-8.txt}
