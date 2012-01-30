@@ -38,78 +38,90 @@ module Moby
     end
 
     describe "wordlist by part of speech" do
-      describe "#noun" do
-        subject { pos.noun }
+      describe "#nouns" do
+        subject { pos.nouns }
         it { should include("abaca", "unchildishness", "transcription" ) }
       end
 
-      describe "#plural" do
-        subject { pos.plural }
+      describe "#plurals" do
+        subject { pos.plurals }
         it { should include("transennae", "uranalyses", "waterfowls" ) }
       end
 
-      describe "#noun_phrase" do
-        subject { pos.noun_phrase }
+      describe "#noun_phrases" do
+        subject { pos.noun_phrases }
         it { should include(
           "waxed paper", "Joan of Arc", "absence of mind"
         )}
       end
 
-      describe "#verb_usu_participle" do
-        subject { pos.verb_usu_participle }
-        it { should include("jobbed", "lattice", "minify" ) }
+      describe "#verbs" do
+        describe ":type not given" do
+          subject { pos.verbs }
+          it { should include(*%w{jobbed outproducing about-shipping}) }
+        end
+
+        describe ":type => :all" do
+          subject { pos.verbs(:type => :all) }
+          it { should include(*%w{jobbed outproducing about-shipping}) }
+        end
+
+        describe ":type => :usu" do
+          subject { pos.verbs(:type => :usu) }
+          it { should include("jobbed", "lattice", "minify" ) }
+        end
+
+        describe ":type => :transitive" do
+          subject { pos.verbs(:type => :transitive) }
+          it { should include("misgauged", "outproducing", "parade" ) }
+        end
+
+        describe ":type => :intransitive" do
+          subject { pos.verbs(:type => :intransitive) }
+          it { should include("paralogized", "skreegh", "about-shipping" ) }
+        end
       end
 
-      describe "#verb_transitive" do
-        subject { pos.verb_transitive }
-        it { should include("misgauged", "outproducing", "parade" ) }
-      end
-
-      describe "#verb_intransitive" do
-        subject { pos.verb_intransitive }
-        it { should include("paralogized", "skreegh", "about-shipping" ) }
-      end
-
-      describe "#adjective" do
-        subject { pos.adjective }
+      describe "#adjectives" do
+        subject { pos.adjectives }
         it { should include("about", "garrulous", "hesperideous" ) }
       end
 
-      describe "#adverb" do
-        subject { pos.adverb }
+      describe "#adverbs" do
+        subject { pos.adverbs }
         it { should include("heterodoxly", "nondiabolically", "stoutly" ) }
       end
 
-      describe "#conjunction" do
-        subject { pos.conjunction }
+      describe "#conjunctions" do
+        subject { pos.conjunctions }
         it { should include("syne", "lest", "notwithstanding" ) }
       end
 
-      describe "#preposition" do
-        subject { pos.preposition }
+      describe "#prepositions" do
+        subject { pos.prepositions }
         it { should include("off", "senza", "except" ) }
       end
 
-      describe "#interjection" do
-        subject { pos.interjection }
+      describe "#interjections" do
+        subject { pos.interjections }
         it { should include("eyes front", "horsefeathers", "jeepers" ) }
       end
 
-      describe "#pronoun" do
-        subject { pos.pronoun }
+      describe "#pronouns" do
+        subject { pos.pronouns }
         it { should include("lot", "me", "noblewoman" ) }
       end
 
-      describe "#definite_article" do
-        subject { pos.definite_article }
+      describe "#definite_articles" do
+        subject { pos.definite_articles }
         it { should include("no", "other", "per" ) }
       end
 
-      describe "#indefinite_article" do
+      describe "#indefinite_articles" do
         pending("No definite articles in current Moby POS")
       end
 
-      describe "#nominative" do
+      describe "#nominatives" do
        pending("No nominatives in current Moby POS")
       end
     end
@@ -131,12 +143,12 @@ module Moby
     end
 
     describe "#respond_to?" do
-      [:noun, :plural, :noun_phrase, :verb_usu_participle, :verb_transitive,
-       :verb_intransitive, :adjective, :adverb, :conjunction, :preposition,
-       :interjection, :pronoun, :definite_article, :indefinite_article,
-       :nominative].each do |meth|
+      [:noun?, :plural?, :noun_phrase?, :verb_usu_participle?,
+       :verb_transitive?, :verb_intransitive?, :adjective?,
+       :adverb?, :conjunction?, :preposition?, :interjection?,
+       :pronoun?, :definite_article?, :indefinite_article?,
+       :nominative?].each do |meth|
         it { should respond_to(meth) }
-        it { should respond_to("#{meth}?".to_sym) }
       end
     end
   end

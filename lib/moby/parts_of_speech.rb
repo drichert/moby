@@ -4,14 +4,39 @@ module Moby
       { word: word, code: pos_code(word), pos: pos_breakdown(word) }
     end
 
+    def nouns; words(:noun); end
+    def plurals; words(:plural) end
+    def noun_phrases; words(:noun_phrase); end
+    def adjectives; words(:adjective); end
+    def adverbs; words(:adverb); end
+    def conjunctions; words(:conjunction); end
+    def prepositions; words(:preposition); end
+    def interjections; words(:interjection); end
+    def pronouns; words(:pronoun); end
+    def definite_articles; words(:definite_article); end
+    def indefinite_articles; words(:indefinite_article); end
+    def nominatives; words(:nominatives); end
+
+    def verbs(options = {:type => :all})
+      case options[:type]
+      when :all
+        words(:verb_usu_participle) +
+        words(:verb_transitive) +
+        words(:verb_intransitive)
+      when :usu
+        words(:verb_usu_participle)
+      when :transitive
+        words(:verb_transitive)
+      when :intransitive
+        words(:verb_intransitive)
+      end
+    end
+
+
     def method_missing(meth, *args, &block)
       meth_s = meth.to_s
 
-      # #noun, #adverb, #verb_usu_participle, etc
-      if pos_names.include?(meth)
-        pos.select {|word, code| code.include?(pos_code_map.key(meth)) }.keys
-      # #noun?, #adverb?, #adjective?, etc
-      elsif meth_s.end_with?("?") and pos_names.include?(meth_s.chop.to_sym)
+      if meth_s.end_with?("?") and pos_names.include?(meth_s.chop.to_sym)
         find(args.first)[:pos].include?(meth_s.chop.to_sym)
       else
         super
@@ -21,9 +46,7 @@ module Moby
     def respond_to?(meth)
       meth_s = meth.to_s
 
-      if pos_names.include?(meth)
-        true
-      elsif meth_s.end_with?("?") and pos_names.include?(meth_s.chop.to_sym)
+      if meth_s.end_with?("?") and pos_names.include?(meth_s.chop.to_sym)
         true
       else
         super
@@ -40,6 +63,11 @@ module Moby
             ln.split('\\').map {|p| p.strip }
           }
         ]
+      end
+
+      # Get words by pos name
+      def words(pos_name)
+        pos.select {|w, c| c.include?(pos_code_map.key(pos_name)) }.keys
       end
 
       # Get part of speech code for word
