@@ -4,6 +4,7 @@ module Moby
       { word: word, code: pos_code(word), pos: pos_breakdown(word) }
     end
 
+    # Word list methods
     def nouns; words(:noun); end
     def plurals; words(:plural) end
     def noun_phrases; words(:noun_phrase); end
