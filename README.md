@@ -12,6 +12,9 @@ Usage
 pos = Moby::PartsOfSpeech.new
 ```
 
+List
+----
+
 Get word lists by part of speech 
 
 ```ruby
@@ -39,6 +42,9 @@ pos.verbs(:type => :transitive)
 pos.verbs(:type => :intransitive)  
 ```
 
+Find
+----
+
 Find parts of speech info for a word
 
 ```ruby
@@ -57,6 +63,9 @@ pos.find("walk")
 #=> }
 ```
 
+Query
+-----
+
 Check a word by part of speech
 
 ```ruby
@@ -66,5 +75,12 @@ pos.intransitive_verb?("walk")  #=> true
 pos.adjective?("sky")           #=> false
 ```
 
+`#verb?` takes an optional `:type` parameter (like `#verbs`)
+
+```ruby
+pos.verb?("abandon", :type => :transitive)          #=> true
+pos.verb?("overurbanized", :type => :intransitive)  #=> false
+pos.verb?("overurbanized")                          #=> true
+```
 
 
