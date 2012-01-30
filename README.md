@@ -6,14 +6,13 @@ Moby
 Ruby interface for [Moby Project](http://en.wikipedia.org/wiki/Moby_Project)
 [wordlists](http://www.gutenberg.org/catalog/world/results?title=moby+list)
 
-Usage
------
+### Usage
+
 ```ruby
 pos = Moby::PartsOfSpeech.new
 ```
 
-List
-----
+### List
 
 Get word lists by part of speech 
 
@@ -42,8 +41,7 @@ pos.verbs(:type => :transitive)
 pos.verbs(:type => :intransitive)  
 ```
 
-Find
-----
+### Find
 
 Find parts of speech info for a word
 
@@ -63,8 +61,7 @@ pos.find("walk")
 #=> }
 ```
 
-Query
------
+### Query
 
 Check a word by part of speech
 
