@@ -12,8 +12,8 @@ Usage
 pos = Moby::PartsOfSpeech.new
 ```
 
-Word list methods
------------------
+List
+----
 
 Get word lists by part of speech 
 
@@ -42,8 +42,8 @@ pos.verbs(:type => :transitive)
 pos.verbs(:type => :intransitive)  
 ```
 
-Query methods
--------------
+Find
+----
 
 Find parts of speech info for a word
 
@@ -62,6 +62,9 @@ pos.find("walk")
 #=>   :pos => [:noun, :verb_transitive, :verb_intransitive]
 #=> }
 ```
+
+Query
+-----
 
 Check a word by part of speech
 
