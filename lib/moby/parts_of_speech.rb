@@ -46,8 +46,8 @@ module Moby
     def interjection?(word); pos?(word, :interjection); end
     def pronoun?(word); pos?(word, :pronoun); end
     def definite_article?(word); pos?(word, :definite_article); end
-    def indefinite_article?(word); end
-    def nominative?(word); end
+    def indefinite_article?(word); pos?(word, :indefinite_article); end
+    def nominative?(word); pos?(word, :nominative); end
 
     private
       def pos
