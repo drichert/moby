@@ -66,5 +66,12 @@ pos.intransitive_verb?("walk")  #=> true
 pos.adjective?("sky")           #=> false
 ```
 
+`#verb?` takes an optional `:type` parameter (like `#verbs`)
+
+```ruby
+pos.verb?("abandon", :type => :transitive)          #=> true
+pos.verb?("overurbanized", :type => :intransitive)  #=> false
+```
+```
 
 
