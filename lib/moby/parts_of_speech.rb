@@ -5,6 +5,7 @@ module Moby
     end
 
     # Word list methods
+
     def nouns; words(:noun); end
     def plurals; words(:plural) end
     def noun_phrases; words(:noun_phrase); end
@@ -32,6 +33,22 @@ module Moby
         words(:verb_intransitive)
       end
     end
+
+    # Query methods
+
+    def noun?(word); pos?(word, :noun); end
+    def plural?(word); pos?(word, :plural); end
+    def noun_phrase?(word); pos?(word, :noun_phrase); end
+    def adjective?(word); pos?(word, :adjective); end
+    def adverb?(word); pos?(word, :adverb); end
+
+    def conjunction?(word); end
+    def preposition?(word); end
+    def interjection?(word); end
+    def pronoun?(word); end
+    def definite_article?(word); end
+    def indefinite_article?(word); end
+    def nominative?(word); end
 
 
     def method_missing(meth, *args, &block)
@@ -64,6 +81,10 @@ module Moby
             ln.split('\\').map {|p| p.strip }
           }
         ]
+      end
+
+      def pos?(word, pos_name)
+        find(word)[:pos].include?(pos_name.to_sym)
       end
 
       # Get words by pos name

@@ -126,30 +126,51 @@ module Moby
       end
     end
 
-    describe "#noun?" do
-      ["accuracy", "bailiff", "Dada"].each do |word|
-        describe "\"#{word}\"" do
+    describe "query methods" do
+      describe "#noun?" do
+        %w{gait teaspoon decorum}.each do |word|
           subject { pos.noun?(word) }
-          it { should be_true }
+          describe(word) { it { should be_true } }
         end
       end
 
-      ["fifty-fifty", "hutting", "impermeably"].each do |word|
-        describe "\"#{word}\"" do
-          subject { pos.noun?(word) }
-          it { should be_false }
+      describe "#plural?" do
+        %w{waterleafs xoanona argosies}.each do |word|
+          subject { pos.plural?(word) }
+          describe(word) { it { should be_true } }
+        end
+      end
+
+      describe "#noun_phrase?" do
+        ["argon potassium dating",
+         "nonharmonic tone",
+         "nook shaft"].each do |word|
+          subject { pos.noun_phrase?(word) }
+          describe(word) { it { should be_true } }
+        end
+      end
+
+      describe "#adjective?" do
+        %w{nonzonated oliguretic conservable}.each do |word|
+          subject { pos.adjective?(word) }
+          describe(word) { it { should be_true } }
+        end
+      end
+
+      describe "#adverb?" do
+        %w{evaporatively hyperactively lonesomely}.each do |word|
+          subject { pos.adverb?(word) }
+          describe(word) { it { should be_true } }
+        end
+      end
+
+      describe "#conjunction?" do
+        %w{moreover saving opuscule}.each do |word|
+          subject { pos.conjunction?(word) }
+          describe(word) { it { should be_true } }
         end
       end
     end
 
-    describe "#respond_to?" do
-      [:noun?, :plural?, :noun_phrase?, :verb_usu_participle?,
-       :verb_transitive?, :verb_intransitive?, :adjective?,
-       :adverb?, :conjunction?, :preposition?, :interjection?,
-       :pronoun?, :definite_article?, :indefinite_article?,
-       :nominative?].each do |meth|
-        it { should respond_to(meth) }
-      end
-    end
   end
 end
