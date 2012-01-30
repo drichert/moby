@@ -71,6 +71,7 @@ pos.adjective?("sky")           #=> false
 ```ruby
 pos.verb?("abandon", :type => :transitive)          #=> true
 pos.verb?("overurbanized", :type => :intransitive)  #=> false
+pos.verb?("overurbanized")                          #=> true
 ```
 
 
