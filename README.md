@@ -12,6 +12,9 @@ Usage
 pos = Moby::PartsOfSpeech.new
 ```
 
+Word list methods
+-----------------
+
 Get word lists by part of speech 
 
 ```ruby
@@ -38,6 +41,9 @@ pos.verbs(:type => :usu)
 pos.verbs(:type => :transitive)
 pos.verbs(:type => :intransitive)  
 ```
+
+Query methods
+-------------
 
 Find parts of speech info for a word
 
