@@ -1,7 +1,11 @@
 module Moby
   class PartsOfSpeech
     def find(word)
-      { word: word, code: pos_code(word), pos: pos_breakdown(word) }
+      { :word  => word,
+        :found => pos.has_key?(word),
+        :code  => pos_code(word),
+        :pos   => pos_breakdown(word)
+      }
     end
 
     # Word list methods

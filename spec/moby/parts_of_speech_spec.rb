@@ -6,42 +6,59 @@ module Moby
     let(:pos) { PartsOfSpeech.new }
 
     describe "#find" do
+      describe "all words" do
+        let(:word) { "purple" }
+        subject { pos.find(word) }
+        its([:word])  { should == word }
+      end
+
+      describe "unlisted word" do
+        let(:word) { "_unlisted" }
+        subject { pos.find(word) }
+        its([:found]) { should be_false }
+      end
+
+      describe "listed word" do
+        let(:word) { "noise limiter" }
+        subject { pos.find(word) }
+        its([:found]) { should be_true }
+      end
+
       describe "_unlisted" do
         let(:word) { "_unlisted" }
         subject { pos.find(word) }
-        its([:word]) { should == word }
-        its([:code]) { should == "" }
-        its([:pos])  { should == [] }
+        its([:word])  { should == word }
+        its([:found]) { should be_false }
+        its([:code])  { should == "" }
+        its([:pos])   { should == [] }
       end
 
-      describe "rabbling" do
-        subject { pos.find("rabbling") }
-        its([:word]) { should == "rabbling" }
-        its([:code]) { should == "Vti" }
-        its([:pos]) {
-          should == [:verb_usu_participle, :verb_transitive, :verb_intransitive]
-        }
-      end
+      describe "specific words" do
+        describe "rabbling" do
+          subject { pos.find("rabbling") }
+          its([:code]) { should == "Vti" }
+          its([:pos]) {
+            should == [:verb_usu_participle, :verb_transitive, :verb_intransitive]
+          }
+        end
 
-      describe "saccharine" do
-        subject { pos.find("saccharine") }
-        its([:word]) { should == "saccharine" }
-        its([:code]) { should == "A" }
-        its([:pos])  { should == [:adjective] }
-      end
+        describe "saccharine" do
+          subject { pos.find("saccharine") }
+          its([:code]) { should == "A" }
+          its([:pos])  { should == [:adjective] }
+        end
 
-      describe "tailgate" do
-        subject { pos.find("tailgate") }
-        its([:word]) { should == "tailgate" }
-        its([:code]) { should == "NV" }
-        its([:pos])  { should == [:noun, :verb_usu_participle] }
-      end
+        describe "tailgate" do
+          subject { pos.find("tailgate") }
+          its([:code]) { should == "NV" }
+          its([:pos])  { should == [:noun, :verb_usu_participle] }
+        end
 
-      describe "ulcerously" do
-        subject { pos.find("ulcerously") }
-        its([:word]) { should == "ulcerously" }
-        its([:code]) { should == "v" }
-        its([:pos])  { should == [:adverb] }
+        describe "ulcerously" do
+          subject { pos.find("ulcerously") }
+          its([:code]) { should == "v" }
+          its([:pos])  { should == [:adverb] }
+        end
       end
     end
 
