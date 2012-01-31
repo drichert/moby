@@ -6,6 +6,14 @@ module Moby
     let(:pos) { PartsOfSpeech.new }
 
     describe "#find" do
+      describe "_unlisted" do
+        let(:word) { "_unlisted" }
+        subject { pos.find(word) }
+        its([:word]) { should == word }
+        its([:code]) { should == "" }
+        its([:pos])  { should == [] }
+      end
+
       describe "rabbling" do
         subject { pos.find("rabbling") }
         its([:word]) { should == "rabbling" }

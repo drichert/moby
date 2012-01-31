@@ -59,6 +59,9 @@ module Moby
             ln.split('\\').map {|p| p.strip }
           }
         ]
+
+        @pos.default = ""
+        @pos
       end
 
       def pos?(word, pos_name)
