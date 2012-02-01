@@ -78,4 +78,7 @@ pos.verb?("overurbanized", :type => :intransitive)  #=> false
 pos.verb?("overurbanized")                          #=> true
 ```
 
+### Copyright
+
+Copyright &copy; 2012 Dan Richert. See LICENSE for details
 
