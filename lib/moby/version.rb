@@ -1,3 +1,3 @@
 module Moby
-  VERSION = "1.0.1beta"
+  VERSION = "1.0.2"
 end
