@@ -4,7 +4,13 @@ Moby
 
 
 Ruby interface for [Moby Project](http://en.wikipedia.org/wiki/Moby_Project)
-[wordlists](http://www.gutenberg.org/catalog/world/results?title=moby+list)
+[word lists](http://www.gutenberg.org/catalog/world/results?title=moby+list).
+The goal is to provide interfaces for most of the Moby Project texts and/or
+wordlists. 
+
+At time of writing, an interface for the Parts-of-Speech database is provided
+by Moby::PartsOfSpeech. More to come!
+
 
 ### Install
 
