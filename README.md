@@ -1,8 +1,6 @@
 Moby
 ====
 
-**WIP**
-
 Ruby interface for [Moby Project](http://en.wikipedia.org/wiki/Moby_Project)
 [wordlists](http://www.gutenberg.org/catalog/world/results?title=moby+list)
 
