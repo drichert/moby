@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Dan Richert"]
   s.email       = ["dan.richert@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Ruby interface for Moby wordlists}
+  s.description = %q{Ruby interface for the world's largest free phonetic database}
 
   s.rubyforge_project = "moby"
 
