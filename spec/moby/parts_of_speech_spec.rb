@@ -81,13 +81,8 @@ module Moby
       end
 
       describe "#verbs" do
-        describe ":type not given" do
+        describe ":type => all or :type not given" do
           subject { pos.verbs }
-          it { should include(*%w{jobbed outproducing about-shipping}) }
-        end
-
-        describe ":type => :all" do
-          subject { pos.verbs(:type => :all) }
           it { should include(*%w{jobbed outproducing about-shipping}) }
         end
 
