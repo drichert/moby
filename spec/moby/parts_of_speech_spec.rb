@@ -231,6 +231,45 @@ module Moby
       describe "#nominative?" do
         pending("No nominatives in current Moby POS")
       end
+
+      describe "#verb?" do
+        describe ":type => :all or :type not given" do
+          %w{dwelled hypostasize pose}.each do |word|
+            describe word do
+              subject { pos.verb?(word, :type => :all) }
+              it { should be_true }
+            end
+          end
+        end
+
+        describe ":type => :usu" do
+          %w{regrinding shimmy resalute}.each do |word|
+            describe word do
+              subject { pos.verb?(word, :type => :all) }
+              it { should be_true }
+            end
+          end
+        end
+
+        describe ":type => :transitive" do
+          %w{resampled agitate eternalizing}.each do |word|
+            describe word do
+              subject { pos.verb?(word, :type => :all) }
+              it { should be_true }
+            end
+          end
+        end
+
+        describe ":type => :intransitive" do
+          %w{joy-ridden superaccruing bing}.each do |word|
+            describe word do
+              subject { pos.verb?(word, :type => :all) }
+              it { should be_true }
+            end
+          end
+        end
+
+      end
     end
 
   end

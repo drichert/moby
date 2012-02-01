@@ -53,6 +53,21 @@ module Moby
     def indefinite_article?(word); pos?(word, :indefinite_article); end
     def nominative?(word); pos?(word, :nominative); end
 
+    def verb?(word, options = {:type => :all})
+      case options[:type]
+      when :all
+        pos?(word, :verb_usu_participle) ||
+        pos?(word, :verb_transitive) ||
+        pos?(word, :verb_intransitive)
+      when :usu
+        pos?(word, :verb_usu_participle)
+      when :transitive
+        pos?(word, :verb_transitive)
+      when :intransitive
+        pos?(word, :verb_intransitive)
+      end
+    end
+
     private
       def pos
         path = %w{share moby parts-of-speech mobypos.UTF-8.txt}
