@@ -9,13 +9,14 @@ Ruby interface for [Moby Project](http://en.wikipedia.org/wiki/Moby_Project)
 The goal is to provide interfaces for most of the Moby Project texts and/or
 wordlists. 
 
-At time of writing, an interface for the Parts-of-Speech database is provided
-by Moby::PartsOfSpeech. More to come!
+Interfaces currently provided are listed below. More to come!
 
 
-### Install
+## Install
 
     gem install moby
+
+## Parts of Speech
 
 ### Usage
 
@@ -91,7 +92,30 @@ pos.verb?("overurbanized", :type => :intransitive)  #=> false
 pos.verb?("overurbanized")                          #=> true
 ```
 
-### Copyright
+## Hyphenator
+
+### Usage
+
+```ruby
+hyph = Moby::Hyphenator.new
+```
+
+Hyphenate words
+
+```ruby
+hyph.hyphenate("bardish") #=> "bard-ish"
+hyph.hyphenate("hastelessness") #=> "haste-less-ness"
+hyph.hyphenate("interpollinating") #=> #"in-ter-pol-li-nat-ing"
+```
+
+Returns the word unchanged if not found or if it shouldn't be hyphenated
+
+```ruby
+hyph.hyphenate("Mordor") #=> "Mordor" (not found)
+hyph.hyphenate("jest") #=> "jest" (shouldn't be hyphenated)
+```
+
+## Copyright
 
 Copyright &copy; 2012 Dan Richert. See LICENSE for details
 
