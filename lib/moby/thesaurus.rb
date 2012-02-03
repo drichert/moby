@@ -4,6 +4,8 @@ module Moby
       syns = thes[word]
       syns.nil? ? [] : syns
     end
+    alias_method :syns, :synonyms
+    alias_method :related, :synonyms
 
     private
       def thes
