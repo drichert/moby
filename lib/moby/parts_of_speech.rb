@@ -1,5 +1,5 @@
 module Moby
-  class PartsOfSpeech
+  class PartsOfSpeech < Base
     def find(word)
       { :word  => word,
         :found => pos.has_key?(word),
@@ -8,20 +8,16 @@ module Moby
       }
     end
 
-    # Word list methods
-
-    def nouns; words(:noun); end
-    def plurals; words(:plural) end
-    def noun_phrases; words(:noun_phrase); end
-    def adjectives; words(:adjective); end
-    def adverbs; words(:adverb); end
-    def conjunctions; words(:conjunction); end
-    def prepositions; words(:preposition); end
-    def interjections; words(:interjection); end
-    def pronouns; words(:pronoun); end
-    def definite_articles; words(:definite_article); end
-    def indefinite_articles; words(:indefinite_article); end
-    def nominatives; words(:nominatives); end
+    %w{
+      noun plural noun_phrase adjective adverb conjunction
+      preposition interjection pronoun definite_article
+      indefinite_article nominative
+    }.each do |p|
+      # Define list method
+      define_method("#{p}s".to_sym) { words(p.to_sym) }
+      # Define query method
+      define_method("#{p}?".to_sym) {|word| pos?(word, p.to_sym) }
+    end
 
     def verbs(options = {:type => :all})
       case options[:type]
@@ -37,21 +33,6 @@ module Moby
         words(:verb_intransitive)
       end
     end
-
-    # Query methods
-
-    def noun?(word); pos?(word, :noun); end
-    def plural?(word); pos?(word, :plural); end
-    def noun_phrase?(word); pos?(word, :noun_phrase); end
-    def adjective?(word); pos?(word, :adjective); end
-    def adverb?(word); pos?(word, :adverb); end
-    def conjunction?(word); pos?(word, :conjunction); end
-    def preposition?(word); pos?(word, :preposition); end
-    def interjection?(word); pos?(word, :interjection); end
-    def pronoun?(word); pos?(word, :pronoun); end
-    def definite_article?(word); pos?(word, :definite_article); end
-    def indefinite_article?(word); pos?(word, :indefinite_article); end
-    def nominative?(word); pos?(word, :nominative); end
 
     def verb?(word, options = {:type => :all})
       case options[:type]
@@ -70,11 +51,8 @@ module Moby
 
     private
       def pos
-        path = %w{share moby parts-of-speech mobypos.UTF-8.txt}
-        pos = File.open(File.join(Moby::base_path, *path))
-
         @pos ||= Hash[
-          pos.readlines.map {|ln|
+          load_list(:pos).readlines.map {|ln|
             ln.split('\\').map {|p| p.strip }
           }
         ]

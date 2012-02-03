@@ -115,6 +115,33 @@ hyph.hyphenate("Mordor") #=> "Mordor" (not found)
 hyph.hyphenate("jest") #=> "jest" (shouldn't be hyphenated)
 ```
 
+## Thesaurus
+
+### Usage
+
+```ruby
+thes = Moby::Thesaurus.new
+```
+
+Get related words (`#syns` and `#related` are aliases of `#synonyms`)
+
+```ruby
+thes.synonyms("apercu") 
+#=> ["a priori knowledge", "abbreviation", "abbreviature", "abrege", ... ]
+
+thes.syns("buoyant")
+#=> ["adaptable", "adaptive", "afloat", "airy", "animated", ... ]
+
+thes.related("infiltration")
+#=> ["absorbency", "absorbent", "absorption", "access", "admission", ... ]
+```
+
+Returns an empty array if word isn't found
+
+```ruby
+thes.syns("Chewbacca") #=> []
+```
+
 ## Copyright
 
 Copyright &copy; 2012 Dan Richert. See LICENSE for details
