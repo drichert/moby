@@ -142,6 +142,37 @@ Returns an empty array if word isn't found
 thes.syns("Chewbacca") #=> []
 ```
 
+## Words
+
+### Usage
+
+```ruby
+words = Moby::Words.new
+```
+
+### Lists
+
+Get word lists
+
+```ruby
+words.acronyms
+words.common
+words.compound
+words.crossword # CROSSWD.TXT
+words.crossword_additions # CRSWD-D.TXT
+words.fiction 
+words.freq
+words.freq_usenet_92 # FREQ-INT.TXT
+words.kjvfreq
+words.names
+words.female_names # NAMES-F.TXT
+words.male_names # NAMES-M.TXT
+words.misspelled # OFTENMIS.TXT
+words.places 
+words.single
+words.us_constitution # USACONST.TXT
+```
+
 ## Copyright
 
 Copyright &copy; 2012 Dan Richert. See LICENSE for details
