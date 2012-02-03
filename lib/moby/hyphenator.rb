@@ -10,6 +10,7 @@ module Moby
     private
       def hyph
         # TODO: DRY; see parts_of_speech
+        # TODO: unclear - don't use 'hyph' as a var name
         path = %w{share moby hyphenation mhyph.UTF-8.txt}
         hyph = File.open(File.join(Moby::base_path, *path))
 
