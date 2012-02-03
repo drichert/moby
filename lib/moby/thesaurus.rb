@@ -1,5 +1,5 @@
 module Moby
-  class Thesaurus
+  class Thesaurus < Base
     def synonyms(word)
       syns = thes[word]
       syns.nil? ? [] : syns
@@ -9,13 +9,8 @@ module Moby
 
     private
       def thes
-        # TODO: DRY; see hyphenator
-        # TODO: unclear - don't use 'thes' as a var name
-        path = %w{share moby thesaurus mthesaur.UTF-8.txt}
-        thes = File.open(File.join(Moby::base_path, *path))
-
         @thes ||= Hash[
-          thes.readlines.map {|ln|
+          load_list(:thesaurus).readlines.map {|ln|
             ln = ln.chomp.split(",")
             [ln.first, ln[1, ln.size - 1]]
           }

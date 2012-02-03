@@ -1,5 +1,5 @@
 module Moby
-  class PartsOfSpeech
+  class PartsOfSpeech < Base
     def find(word)
       { :word  => word,
         :found => pos.has_key?(word),
@@ -70,11 +70,8 @@ module Moby
 
     private
       def pos
-        path = %w{share moby parts-of-speech mobypos.UTF-8.txt}
-        pos = File.open(File.join(Moby::base_path, *path))
-
         @pos ||= Hash[
-          pos.readlines.map {|ln|
+          load_list(:pos).readlines.map {|ln|
             ln.split('\\').map {|p| p.strip }
           }
         ]
