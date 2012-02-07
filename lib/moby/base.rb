@@ -14,7 +14,8 @@ module Moby
       def wordlist_paths
         { :pos         => "parts-of-speech/mobypos.UTF-8.txt",
           :hyphenation => "hyphenation/mhyph.UTF-8.txt",
-          :thesaurus   => "thesaurus/mthesaur.UTF-8.txt"
+          :thesaurus   => "thesaurus/mthesaur.UTF-8.txt",
+          :acronyms    => "words/UTF-8/acronyms"
         }
       end
   end

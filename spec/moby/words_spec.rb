@@ -2,8 +2,11 @@ require 'spec_helper'
 
 module Moby
   describe Words do
+    let(:words) { Moby::Words.new }
+
     describe "#acronyms" do
-      pending
+      subject { words.acronyms }
+      it { should include("AAA", "HEAP", "MTech", "NAVDAC") }
     end
 
     describe "#common" do
