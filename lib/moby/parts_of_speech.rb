@@ -51,12 +51,7 @@ module Moby
 
     private
       def pos
-        @pos ||= Hash[
-          load_list(:pos).readlines.map {|ln|
-            ln.split('\\').map {|p| p.strip }
-          }
-        ]
-
+        @pos ||= Hash[load_list(:pos).map {|ln| ln.split('\\') }]
         @pos.default = ""
         @pos
       end

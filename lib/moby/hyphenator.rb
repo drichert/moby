@@ -10,8 +10,7 @@ module Moby
     private
       def hyph
         @hyphenation ||= Hash[
-          load_list(:hyphenation).readlines.map {|ln|
-            ln.chomp!
+          load_list(:hyphenation).map {|ln|
             [ln.gsub(/•/, ""), ln.gsub(/•/, "-")]
           }
         ]

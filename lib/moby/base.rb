@@ -8,7 +8,7 @@ module Moby
             *%w{share moby},
             wordlist_paths[list_name]
           )
-        )
+        ).readlines.map {|ln| ln.chomp }
       end
 
       def wordlist_paths

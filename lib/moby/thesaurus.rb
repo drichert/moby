@@ -10,8 +10,8 @@ module Moby
     private
       def thes
         @thes ||= Hash[
-          load_list(:thesaurus).readlines.map {|ln|
-            ln = ln.chomp.split(",")
+          load_list(:thesaurus).map {|ln|
+            ln = ln.split(",")
             [ln.first, ln[1, ln.size - 1]]
           }
         ]
