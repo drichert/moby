@@ -6,11 +6,12 @@ module Moby
 
     describe "#acronyms" do
       subject { words.acronyms }
-      it { should include("AAA", "HEAP", "MTech", "NAVDAC") }
+      it { should include(*%w{AAA HEAP MTech NAVDAC}) }
     end
 
     describe "#common" do
-      pending
+      subject { words.common }
+      it { should include(*%w{Dundee ablate nova slopwork}) }
     end
 
     describe "#compound" do
