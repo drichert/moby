@@ -15,5 +15,9 @@ module Moby
     def crossword
       @crossword = load_list(:crossword)
     end
+
+    def crossword_additions
+      @crossword_additions ||= load_list(:crossword_additions)
+    end
   end
 end

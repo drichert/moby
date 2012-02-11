@@ -12,13 +12,14 @@ module Moby
       end
 
       def wordlist_paths
-        { :pos         => "parts-of-speech/mobypos.UTF-8.txt",
-          :hyphenation => "hyphenation/mhyph.UTF-8.txt",
-          :thesaurus   => "thesaurus/mthesaur.UTF-8.txt",
-          :acronyms    => "words/UTF-8/acronyms",
-          :common      => "words/UTF-8/common",
-          :compound    => "words/UTF-8/compound",
-          :crossword   => "words/UTF-8/crosswd"
+        { :pos                  => "parts-of-speech/mobypos.UTF-8.txt",
+          :hyphenation          => "hyphenation/mhyph.UTF-8.txt",
+          :thesaurus            => "thesaurus/mthesaur.UTF-8.txt",
+          :acronyms             => "words/UTF-8/acronyms",
+          :common               => "words/UTF-8/common",
+          :compound             => "words/UTF-8/compound",
+          :crossword            => "words/UTF-8/crosswd",
+          :crossword_additions  => "words/UTF-8/crswd-d"
         }
       end
   end

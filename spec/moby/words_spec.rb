@@ -25,7 +25,8 @@ module Moby
     end
 
     describe "#crossword_additions" do
-      pending
+      subject { words.crossword_additions }
+      it { should include("indie", "kayaked", "lahars", "progeria")  }
     end
 
     describe "#fiction" do
