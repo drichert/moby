@@ -9,11 +9,11 @@ module Moby
     end
 
     def compound
-      @compound = load_list(:compound)
+      @compound ||= load_list(:compound)
     end
 
     def crossword
-      @crossword = load_list(:crossword)
+      @crossword ||= load_list(:crossword)
     end
 
     def crossword_additions
