@@ -30,7 +30,8 @@ module Moby
     end
 
     describe "#fiction" do
-      pending
+      subject { words.fiction }
+      it { should include("10330<w>", "1896<at >", "1161<pe>", "812<out>")  }
     end
 
     describe "#freq" do

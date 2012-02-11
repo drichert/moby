@@ -19,7 +19,8 @@ module Moby
           :common               => "words/UTF-8/common",
           :compound             => "words/UTF-8/compound",
           :crossword            => "words/UTF-8/crosswd",
-          :crossword_additions  => "words/UTF-8/crswd-d"
+          :crossword_additions  => "words/UTF-8/crswd-d",
+          :fiction              => "words/UTF-8/fiction"
         }
       end
   end

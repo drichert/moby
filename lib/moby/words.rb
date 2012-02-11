@@ -19,5 +19,9 @@ module Moby
     def crossword_additions
       @crossword_additions ||= load_list(:crossword_additions)
     end
+
+    def fiction
+      @fiction ||= load_list(:fiction)
+    end
   end
 end
