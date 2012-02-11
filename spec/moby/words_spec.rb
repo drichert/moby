@@ -35,7 +35,8 @@ module Moby
     end
 
     describe "#freq" do
-      pending
+      subject { words.freq }
+      it { should include("the", "down", "very", "service")  }
     end
 
     describe "#freq_usenet_92" do

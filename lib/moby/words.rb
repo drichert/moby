@@ -23,5 +23,9 @@ module Moby
     def fiction
       @fiction ||= load_list(:fiction)
     end
+
+    def freq
+      @freq ||= load_list(:freq)
+    end
   end
 end
