@@ -21,12 +21,12 @@ module Moby
 
     describe "#crossword" do
       subject { words.crossword }
-      it { should include("abattoir", "supervise", "tabering", "zymases")  }
+      it { should include(*%w{abattoir supervise tabering zymases})  }
     end
 
     describe "#crossword_additions" do
       subject { words.crossword_additions }
-      it { should include("indie", "kayaked", "lahars", "progeria")  }
+      it { should include(*%w{indie kayaked lahars progeria})  }
     end
 
     describe "#fiction" do
@@ -36,7 +36,7 @@ module Moby
 
     describe "#freq" do
       subject { words.freq }
-      it { should include("the", "down", "very", "service")  }
+      it { should include(*%w{the down very service})  }
     end
 
     describe "#freq_usenet_92" do
