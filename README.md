@@ -152,7 +152,7 @@ words = Moby::Words.new
 
 ### Lists
 
-Get word lists
+Get lists; lines are not processed.
 
 ```ruby
 words.acronyms
