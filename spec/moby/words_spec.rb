@@ -15,11 +15,13 @@ module Moby
     end
 
     describe "#compound" do
-      pending
+      subject { words.compound }
+      it { should include("-age", "ACE mixture", "Barmecide feast", "salt box")  }
     end
 
     describe "#crossword" do
-      pending
+      subject { words.crossword }
+      it { should include("abattoir", "supervise", "tabering", "zymases")  }
     end
 
     describe "#crossword_additions" do

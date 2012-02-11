@@ -16,7 +16,9 @@ module Moby
           :hyphenation => "hyphenation/mhyph.UTF-8.txt",
           :thesaurus   => "thesaurus/mthesaur.UTF-8.txt",
           :acronyms    => "words/UTF-8/acronyms",
-          :common      => "words/UTF-8/common"
+          :common      => "words/UTF-8/common",
+          :compound    => "words/UTF-8/compound",
+          :crossword   => "words/UTF-8/crosswd"
         }
       end
   end
