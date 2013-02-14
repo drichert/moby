@@ -1,8 +1,6 @@
 Moby
 ====
 [![Build Status](https://secure.travis-ci.org/drichert/moby.png)](http://travis-ci.org/drichert/moby)
-[![Dependency Status](https://gemnasium.com/drichert/moby.png)](https://gemnasium.com/drichert/moby)
-
 
 Ruby interface for [Moby Project](http://en.wikipedia.org/wiki/Moby_Project)
 [word lists](http://www.gutenberg.org/catalog/world/results?title=moby+list).
